@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/konva@7.2.4/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Konva Image Resize Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="width: 720px; height:640px; border: solid black 10px;"></div>
+    <button onclick="printPositions()">Print Positions</button>
+    <div id="positions"></div>
+    <script>
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        var stage = new Konva.Stage({
+            container: 'container',
+            width: 720,
+            height: 640,
+        });
+
+        var layer = new Konva.Layer();
+        stage.add(layer);
+
+        var aircraftImgs = [];
+        var appleImgs = [];
+        var eiffelImgs = [];
+        for (var i = 0; i < 10; i++) {
+            aircraftImgs.push(
+                new Konva.Image({
+                    width: 32,
+                    height: 32,
+                    x: 40 * i,
+                    y: 50,
+                    draggable: true,
+                }));
+
+            layer.add(aircraftImgs[i]);
+
+            appleImgs.push(
+                new Konva.Image({
+                    width: 32,
+                    height: 32,
+                    x: 40 * i,
+                    y: 100,
+                    draggable: true,
+                }));
+
+            layer.add(appleImgs[i]);
+
+            eiffelImgs.push(
+                new Konva.Image({
+                    width: 32,
+                    height: 32,
+                    x: 40 * i,
+                    y: 150,
+                    draggable: true,
+                }));
+
+            layer.add(eiffelImgs[i]);
+        }
+
+        var printPositions = function () {
+            var str = "";
+            for (var i = 0; i < 10; i++) {
+                if (aircraftImgs[i]._lastPos !== null)
+                    str += "aircraft , " + i + " , " + aircraftImgs[i]._lastPos.x + " , " + aircraftImgs[i]._lastPos.y + "\n";
+            }
+            for (var i = 0; i < 10; i++) {
+                if (appleImgs[i]._lastPos !== null)
+                    str += "apple , " + i + " , " + appleImgs[i]._lastPos.x + " , " + appleImgs[i]._lastPos.y + "\n";
+            }
+            for (var i = 0; i < 10; i++) {
+                if (eiffelImgs[i]._lastPos !== null)
+                    str += "eiffel , " + i + " , " + eiffelImgs[i]._lastPos.x + " , " + eiffelImgs[i]._lastPos.y + "\n";
+            }
+            document.getElementById("positions").innerText = str;
+            console.log(str);
+        }
+
+        var aircraftImgObj0 = new Image();
+        aircraftImgObj0.onload = function () {
+            aircraftImgs[0].image(aircraftImgObj0);
+            layer.draw();
+        };
+        aircraftImgObj0.src = './data/aircraft/0.jpg';
+
+        var aircraftImgObj1 = new Image();
+        aircraftImgObj1.onload = function () {
+            aircraftImgs[1].image(aircraftImgObj1);
+            layer.draw();
+        };
+        aircraftImgObj1.src = './data/aircraft/1.jpg';
+
+        var aircraftImgObj2 = new Image();
+        aircraftImgObj2.onload = function () {
+            aircraftImgs[2].image(aircraftImgObj2);
+            layer.draw();
+        };
+        aircraftImgObj2.src = './data/aircraft/2.jpg';
+
+        var aircraftImgObj3 = new Image();
+        aircraftImgObj3.onload = function () {
+            aircraftImgs[3].image(aircraftImgObj3);
+            layer.draw();
+        };
+        aircraftImgObj3.src = './data/aircraft/3.jpg';
+
+        var aircraftImgObj4 = new Image();
+        aircraftImgObj4.onload = function () {
+            aircraftImgs[4].image(aircraftImgObj4);
+            layer.draw();
+        };
+        aircraftImgObj4.src = './data/aircraft/4.jpg';
+
+        var aircraftImgObj5 = new Image();
+        aircraftImgObj5.onload = function () {
+            aircraftImgs[5].image(aircraftImgObj5);
+            layer.draw();
+        };
+        aircraftImgObj5.src = './data/aircraft/5.jpg';
+
+        var aircraftImgObj6 = new Image();
+        aircraftImgObj6.onload = function () {
+            aircraftImgs[6].image(aircraftImgObj6);
+            layer.draw();
+        };
+        aircraftImgObj6.src = './data/aircraft/6.jpg';
+
+        var aircraftImgObj7 = new Image();
+        aircraftImgObj7.onload = function () {
+            aircraftImgs[7].image(aircraftImgObj7);
+            layer.draw();
+        };
+        aircraftImgObj7.src = './data/aircraft/7.jpg';
+
+        var aircraftImgObj8 = new Image();
+        aircraftImgObj8.onload = function () {
+            aircraftImgs[8].image(aircraftImgObj8);
+            layer.draw();
+        };
+        aircraftImgObj8.src = './data/aircraft/8.jpg';
+
+        var aircraftImgObj9 = new Image();
+        aircraftImgObj9.onload = function () {
+            aircraftImgs[9].image(aircraftImgObj9);
+            layer.draw();
+        };
+        aircraftImgObj9.src = './data/aircraft/9.jpg';
+
+        var appleImgObj0 = new Image();
+        appleImgObj0.onload = function () {
+            appleImgs[0].image(appleImgObj0);
+            layer.draw();
+        };
+        appleImgObj0.src = './data/apple/0.jpg';
+
+        var appleImgObj1 = new Image();
+        appleImgObj1.onload = function () {
+            appleImgs[1].image(appleImgObj1);
+            layer.draw();
+        };
+        appleImgObj1.src = './data/apple/1.jpg';
+
+        var appleImgObj2 = new Image();
+        appleImgObj2.onload = function () {
+            appleImgs[2].image(appleImgObj2);
+            layer.draw();
+        };
+        appleImgObj2.src = './data/apple/2.jpg';
+
+        var appleImgObj3 = new Image();
+        appleImgObj3.onload = function () {
+            appleImgs[3].image(appleImgObj3);
+            layer.draw();
+        };
+        appleImgObj3.src = './data/apple/3.jpg';
+
+        var appleImgObj4 = new Image();
+        appleImgObj4.onload = function () {
+            appleImgs[4].image(appleImgObj4);
+            layer.draw();
+        };
+        appleImgObj4.src = './data/apple/4.jpg';
+
+        var appleImgObj5 = new Image();
+        appleImgObj5.onload = function () {
+            appleImgs[5].image(appleImgObj5);
+            layer.draw();
+        };
+        appleImgObj5.src = './data/apple/5.jpg';
+
+        var appleImgObj6 = new Image();
+        appleImgObj6.onload = function () {
+            appleImgs[6].image(appleImgObj6);
+            layer.draw();
+        };
+        appleImgObj6.src = './data/apple/6.jpg';
+
+        var appleImgObj7 = new Image();
+        appleImgObj7.onload = function () {
+            appleImgs[7].image(appleImgObj7);
+            layer.draw();
+        };
+        appleImgObj7.src = './data/apple/7.jpg';
+
+        var appleImgObj8 = new Image();
+        appleImgObj8.onload = function () {
+            appleImgs[8].image(appleImgObj8);
+            layer.draw();
+        };
+        appleImgObj8.src = './data/apple/8.jpg';
+
+        var appleImgObj9 = new Image();
+        appleImgObj9.onload = function () {
+            appleImgs[9].image(appleImgObj9);
+            layer.draw();
+        };
+        appleImgObj9.src = './data/apple/9.jpg';
+
+        var eiffelImgObj0 = new Image();
+        eiffelImgObj0.onload = function () {
+            eiffelImgs[0].image(eiffelImgObj0);
+            layer.draw();
+        };
+        eiffelImgObj0.src = './data/eiffel/0.jpg';
+
+        var eiffelImgObj1 = new Image();
+        eiffelImgObj1.onload = function () {
+            eiffelImgs[1].image(eiffelImgObj1);
+            layer.draw();
+        };
+        eiffelImgObj1.src = './data/eiffel/1.jpg';
+
+        var eiffelImgObj2 = new Image();
+        eiffelImgObj2.onload = function () {
+            eiffelImgs[2].image(eiffelImgObj2);
+            layer.draw();
+        };
+        eiffelImgObj2.src = './data/eiffel/2.jpg';
+
+        var eiffelImgObj3 = new Image();
+        eiffelImgObj3.onload = function () {
+            eiffelImgs[3].image(eiffelImgObj3);
+            layer.draw();
+        };
+        eiffelImgObj3.src = './data/eiffel/3.jpg';
+
+        var eiffelImgObj4 = new Image();
+        eiffelImgObj4.onload = function () {
+            eiffelImgs[4].image(eiffelImgObj4);
+            layer.draw();
+        };
+        eiffelImgObj4.src = './data/eiffel/4.jpg';
+
+        var eiffelImgObj5 = new Image();
+        eiffelImgObj5.onload = function () {
+            eiffelImgs[5].image(eiffelImgObj5);
+            layer.draw();
+        };
+        eiffelImgObj5.src = './data/eiffel/5.jpg';
+
+        var eiffelImgObj6 = new Image();
+        eiffelImgObj6.onload = function () {
+            eiffelImgs[6].image(eiffelImgObj6);
+            layer.draw();
+        };
+        eiffelImgObj6.src = './data/eiffel/6.jpg';
+
+        var eiffelImgObj7 = new Image();
+        eiffelImgObj7.onload = function () {
+            eiffelImgs[7].image(eiffelImgObj7);
+            layer.draw();
+        };
+        eiffelImgObj7.src = './data/eiffel/7.jpg';
+
+        var eiffelImgObj8 = new Image();
+        eiffelImgObj8.onload = function () {
+            eiffelImgs[8].image(eiffelImgObj8);
+            layer.draw();
+        };
+        eiffelImgObj8.src = './data/eiffel/8.jpg';
+
+        var eiffelImgObj9 = new Image();
+        eiffelImgObj9.onload = function () {
+            eiffelImgs[9].image(eiffelImgObj9);
+            layer.draw();
+        };
+        eiffelImgObj9.src = './data/eiffel/9.jpg';
+    </script>
+</body>
+
+</html>
