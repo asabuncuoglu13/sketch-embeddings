@@ -4,22 +4,50 @@
 <head>
     <script src="https://unpkg.com/konva@7.2.4/konva.min.js"></script>
     <meta charset="utf-8" />
-    <title>Konva Image Resize Demo</title>
+    <title>Sketch Clusters</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
             background-color: #f0f0f0;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
     </style>
 </head>
 
 <body style="overflow-y: auto;">
+    <h3>Sketch Clusters</h3>
+    <p>Create clusters on the canvas with the given objects</p>
     <div id="container" style="width: 720px; height:640px; border: solid black 10px;"></div>
-    <button onclick="printPositions()">Print Positions</button>
+    <p>Click the button below and save the files. A Google Form tab will be opened. Send the files via this form.</p>
+    <button onclick="saveResult()">Save Result</button>
     <div id="positions"></div>
     <script>
+
+        var downloadCanvasAsImage = function () {
+            let downloadLink = document.createElement('a');
+            downloadLink.setAttribute('download', 'canvas.png');
+            let canvas = document.getElementById("container").getElementsByTagName("canvas")[0];
+            let dataURL = canvas.toDataURL('image/png');
+            let url = dataURL.replace(/^data:image\/png/, 'data:application/octet-stream');
+            downloadLink.setAttribute('href', url);
+            downloadLink.click();
+        }
+
+        function downloadCSV() {
+            var elHtml = document.getElementById("positions").innerHTML.replace(/<br>/g, "\n");
+            var link = document.createElement('a');
+            link.setAttribute('download', "positions.csv");
+            link.setAttribute('href', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(elHtml));
+            link.click();
+        }
+
+        var saveResult = function () {
+            downloadCanvasAsImage();
+            printPositions();
+            window.open("https://docs.google.com/forms/d/e/1FAIpQLSfM_G7BZr4xF5JvO1DL37Iv8egDoQQScsqutv-5hF4PrsrFfw/viewform?usp=sf_link", '_blank');
+        }
 
         var width = window.innerWidth;
         var height = window.innerHeight;
@@ -75,18 +103,18 @@
             var str = "";
             for (var i = 0; i < 10; i++) {
                 if (aircraftImgs[i]._lastPos !== null)
-                    str += "aircraft , " + i + " , " + aircraftImgs[i]._lastPos.x + " , " + aircraftImgs[i]._lastPos.y + "\n";
+                    str += "aircraft," + i + "," + aircraftImgs[i]._lastPos.x + "," + aircraftImgs[i]._lastPos.y + "\n";
             }
             for (var i = 0; i < 10; i++) {
                 if (appleImgs[i]._lastPos !== null)
-                    str += "apple , " + i + " , " + appleImgs[i]._lastPos.x + " , " + appleImgs[i]._lastPos.y + "\n";
+                    str += "apple," + i + "," + appleImgs[i]._lastPos.x + "," + appleImgs[i]._lastPos.y + "\n";
             }
             for (var i = 0; i < 10; i++) {
                 if (eiffelImgs[i]._lastPos !== null)
-                    str += "eiffel , " + i + " , " + eiffelImgs[i]._lastPos.x + " , " + eiffelImgs[i]._lastPos.y + "\n";
+                    str += "eiffel," + i + "," + eiffelImgs[i]._lastPos.x + "," + eiffelImgs[i]._lastPos.y + "\n";
             }
             document.getElementById("positions").innerText = str;
-            console.log(str);
+            downloadCSV();
         }
 
         var aircraftImgObj0 = new Image();
