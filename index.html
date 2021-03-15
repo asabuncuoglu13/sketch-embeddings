@@ -1,22 +1,17 @@
-<!--
-  Copyright 2018 The Distill Template Authors
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <!doctype html>
 
 <head>
   <script src="https://distill.pub/template.v2.js"></script>
+  <script language="javascript" type="text/javascript"
+    src="https://storage.googleapis.com/quickdraw-models/sketchRNN/models/mosquito.vae.js"></script>
+
+  <script language="javascript" type="text/javascript" src="js/lib/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="js/lib/p5.dom.min.js"></script>
+  <script language="javascript" type="text/javascript" src="js/lib/numjs.js"></script>
+  <script language="javascript" type="text/javascript" src="js/lib/sketch_rnn.js"></script>
+
+  <script language="javascript" type="text/javascript" src="js/data_tool.js"></script>
+  <script language="javascript" type="text/javascript" src="js/interp.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf8">
 </head>
@@ -25,8 +20,8 @@
   <distill-header></distill-header>
   <d-front-matter>
     <script id='distill-front-matter' type="text/json">{
-    "title": "Deep Models in Sketch Recognition and Generation",
-    "description": "This is a review paper on recent advances in the field of sketch interfaces",
+    "title": "Exploring the Latent Space of Sketch Encoding Models",
+    "description": "This is a review paper on recent generative models.",
     "published": "Mar 2, 2021",
     "authors": [{
         "author":"Alpay Sabuncuoglu",
@@ -153,6 +148,9 @@
           });
         </script>
         <p>That's it for the example article!</p>
+
+        <p id="sketch-interp" style="display: inline;"></p>
+        <p id="sketch-vae" style="display: inline;"></p>
 
   </d-article>
 
